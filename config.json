@@ -1,0 +1,9 @@
+{
+  "appId": "com.smartschool.app",
+  "appName": "Smart School",
+  "webDir": "www",
+  "server": {
+    "url": "https://emmanueloshaka3-netizen.github.io/school-app/",
+    "androidScheme": "https"
+  }
+}
