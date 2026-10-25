@@ -24,6 +24,27 @@ jobs:
       - name: Install packages
         run: npm install
 
+      - name: Write the app settings
+        run: |
+          mkdir -p www
+          cat > capacitor.config.json <<'EOF'
+          {
+            "appId": "com.smartschool.app",
+            "appName": "Smart School",
+            "webDir": "www",
+            "server": {
+              "url": "https://emmanueloshaka3-netizen.github.io/school-app/",
+              "androidScheme": "https"
+            }
+          }
+          EOF
+          cat > www/index.html <<'EOF'
+          <!doctype html>
+          <html><head><meta charset="utf-8"><title>Smart School</title>
+          <meta http-equiv="refresh" content="0;url=https://emmanueloshaka3-netizen.github.io/school-app/">
+          </head><body><p>Opening Smart School...</p></body></html>
+          EOF
+
       - name: Create the Android project
         run: npx cap add android
 
