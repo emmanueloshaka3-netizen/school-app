@@ -32,6 +32,7 @@ jobs:
             "appId": "com.smartschool.app",
             "appName": "Smart School",
             "webDir": "www",
+            "backgroundColor": "#FFF8F8",
             "server": {
               "url": "https://emmanueloshaka3-netizen.github.io/school-app/",
               "androidScheme": "https"
@@ -60,6 +61,13 @@ jobs:
             convert "$SRC" -resize ${2}x${2} "$RES/mipmap-$1/ic_launcher.png"
             convert "$SRC" -resize ${2}x${2} "$RES/mipmap-$1/ic_launcher_round.png"
             convert "$SRC" -resize ${3}x${3} "$RES/mipmap-$1/ic_launcher_foreground.png"
+          done
+
+      - name: Set a plain launch screen colour
+        run: |
+          for f in $(find android/app/src/main/res -name splash.png); do
+            size=$(identify -format "%wx%h" "$f")
+            convert -size "$size" xc:'#FFF8F8' "$f"
           done
 
       - name: Build the app
